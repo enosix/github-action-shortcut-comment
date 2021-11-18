@@ -1,0 +1,25 @@
+name: Add Shortcut Comment
+description: Add a comment to all linked stories
+inputs:
+  GITHUB_TOKEN:
+    required: true
+    description: "Token to perform api calls"
+  SHORTCUT_TOKEN:
+    required: true
+    description: "Token to perform api calls"
+  comment:
+    required: false
+    description: "Comment to add"
+    default: ""
+  removePreviousComments:
+    required: false
+    description: "Remove all previous auto-generated comments from this pr"
+    default: "false"
+
+runs:
+  using: node12
+  main: dist/index.js
+
+branding:
+  icon: 'message-square'
+  color: 'blue'
