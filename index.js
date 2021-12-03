@@ -2,7 +2,7 @@ let github = require('@actions/github')
 let core = require('@actions/core')
 const { ShortcutClient } = require('@useshortcut/client');
 
-let pattern = /(?:\[|\/)(?:(?:sh-?)|(?:ch))(\d+)(?:\]|\/)/g
+let pattern = /(?:\[|\/)(?:(?:sc-?)|(?:ch))(\d+)(?:\]|\/)/g
 function matchStories(str){
   let result = []
   str = str || ''
