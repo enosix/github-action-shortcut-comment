@@ -42,7 +42,7 @@ async function main () {
       Promise.all(Array.from(stories).flatMap(async id => {
         let story = await shortcut.getStory(id)
         return story.data.comments
-            .filter(x => x.external_id.startsWith('pr' + github.context.payload.pull_request.number + '-'))
+            .filter(x => x.external_id && x.external_id.startsWith('pr' + github.context.payload.pull_request.number + '-'))
             .map(x => shortcut.deleteStoryComment(id, x.id))
       }))
     }

@@ -719,7 +719,7 @@ let github = __webpack_require__(469)
 let core = __webpack_require__(470)
 const { ShortcutClient } = __webpack_require__(23);
 
-let pattern = /(?:\[|\/)(?:(?:sh-?)|(?:ch))(\d+)(?:\]|\/)/g
+let pattern = /(?:\[|\/)(?:(?:sc-?)|(?:ch))(\d+)(?:\]|\/)/g
 function matchStories(str){
   let result = []
   str = str || ''
@@ -759,7 +759,7 @@ async function main () {
       Promise.all(Array.from(stories).flatMap(async id => {
         let story = await shortcut.getStory(id)
         return story.data.comments
-            .filter(x => x.external_id.startsWith('pr' + github.context.payload.pull_request.number + '-'))
+            .filter(x => x.external_id && x.external_id.startsWith('pr' + github.context.payload.pull_request.number + '-'))
             .map(x => shortcut.deleteStoryComment(id, x.id))
       }))
     }
